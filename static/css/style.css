@@ -1,0 +1,76 @@
+:root{
+  --brand:#2563EB; /* indigo */
+  --accent:#06B6D4; /* teal */
+  --muted:#6b7280; /* cool gray */
+  --card:#ffffff;
+  --glass: rgba(255,255,255,0.75);
+  --bg: #F8FAFF;
+  --gradient-1: linear-gradient(135deg,#2563EB 0%, #06B6D4 100%);
+}
+.body, body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg);}
+.navbar-brand img{height:36px}
+.card { box-shadow: 0 12px 30px rgba(37,50,84,0.06); border-radius:14px; background: var(--card); border: none }
+.hero { background: var(--gradient-1); color: white; padding:28px; border-radius:14px }
+.small-muted{color:var(--muted); font-size:0.9rem}
+.vault-item { display:flex; align-items:center; justify-content:space-between }
+.vault-meta { color:var(--muted); font-size:0.9rem }
+.footer { border-top:1px solid #eee; margin-top:28px; padding-top:18px; color:var(--muted) }
+.btn-brand { background:var(--brand); border-color:var(--brand); color:#fff; box-shadow: 0 8px 22px rgba(37,99,235,0.12) }
+
+/* Forms and buttons */
+.form-control:focus { box-shadow: 0 0 0 0.18rem rgba(37,99,235,0.12); border-color: rgba(37,99,235,0.6); }
+.btn-primary { background: var(--brand); border-color: var(--brand); }
+.btn-outline-secondary { border-color: rgba(255,255,255,0.1); }
+
+/* Vault list styling */
+.list-group-item { border-radius:10px; margin-bottom:10px; transition: transform .15s ease, box-shadow .15s ease; position:relative; overflow:visible }
+.list-group-item::before { content: ''; position:absolute; left:0; top:0; bottom:0; width:8px; background: linear-gradient(180deg, rgba(37,99,235,1), rgba(6,182,212,1)); }
+.list-group-item:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(44,47,55,0.08); }
+
+/* Tiles/grid view for lists */
+.tiles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:16px; padding:0; }
+.list-group.tiles-grid { margin:0; }
+.list-group.tiles-grid .list-group-item { margin:0; padding:18px; border-radius:14px; background:var(--card); box-shadow: 0 10px 30px rgba(37,50,84,0.06); border:none; min-height:140px; display:flex; flex-direction:column; justify-content:space-between }
+.list-group.tiles-grid .list-group-item::before { left:0; top:0; bottom:0; width:8px; border-radius:12px 0 0 12px }
+.tile-actions { display:flex; gap:6px; align-items:center }
+.service-badge { width:46px; height:46px; border-radius:10px; font-size:1.05rem }
+.service-name { font-size:1.05rem }
+
+/* Ensure plaintext form controls are visible and wrap long content */
+.form-control-plaintext { color: #212529; background: transparent; padding: 0.25rem 0; border: none; }
+.form-control-plaintext[readonly] { cursor: text }
+.list-group-item, .list-group-item p, .list-group-item input, .list-group-item pre { word-break: break-word; overflow-wrap: anywhere }
+
+/* Responsiveness tweaks */
+@media (max-width: 576px) {
+  .tiles-grid { grid-template-columns: 1fr; gap:12px }
+  .service-badge { width:40px; height:40px; font-size:0.95rem }
+  .hero { padding:14px }
+  .card.p-3 { padding:12px }
+}
+
+.service-badge { display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:8px; color:white; font-weight:600; margin-right:10px }
+.service-name { display:flex; align-items:center }
+
+/* colorful badges cycling */
+.badge-c1{ background:#7C3AED }
+.badge-c2{ background:#06B6D4 }
+.badge-c3{ background:#F472B6 }
+.badge-c4{ background:#0891B2 }
+.badge-c5{ background:#F59E0B }
+
+/* Modal/detail styles */
+#detailModal { pointer-events: auto }
+#detailModal .card { border-radius:10px }
+#detailModal .card-body { padding:1rem }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero { padding:18px }
+  .service-badge { width:34px; height:34px }
+  .list-group-item { padding:12px }
+}
+
+/* Slight performance-friendly rule to avoid heavy repaints */
+img { image-rendering: optimizeSpeed }
+

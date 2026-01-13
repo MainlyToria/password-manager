@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <div class="d-flex justify-content-between mb-2">
+    <h3>Vault</h3>
+    <div>
+      <a href="{{ url_for('logout') }}" class="btn btn-outline-secondary">Lock</a>
+      <a href="{{ url_for('export') }}" class="btn btn-outline-success">Export CSV</a>
+    </div>
+  </div>
+
+  <form method="post" action="{{ url_for('add') }}" class="card p-3 mb-3">
+    <div class="row g-2">
+      <div class="col-md-4"><input class="form-control" name="service" placeholder="Service"></div>
+      <div class="col-md-3"><input class="form-control" name="username" placeholder="Username"></div>
+      <div class="col-md-3"><input class="form-control" name="password" placeholder="Password"></div>
+      <div class="col-md-2"><button class="btn btn-primary w-100" type="submit">Add</button></div>
+    </div>
+  </form>
+
+  <div class="list-group tiles-grid">
+    {% for e in entries %}
+      <div class="list-group-item">
+        <div class="d-flex w-100 justify-content-between align-items-start">
+          <h5 class="mb-1 service-name"><span class="service-badge badge-c{{ (loop.index0 % 5) + 1 }}">{{ e.service[:1] }}</span>{{ e.service }}</h5>
+          <div class="tile-actions">
+            <a href="{{ url_for('edit', idx=loop.index0) }}" class="btn btn-sm btn-outline-primary">Edit</a>
+            <form method="post" action="{{ url_for('delete', idx=loop.index0) }}" style="display:inline">
+              <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+            </form>
+          </div>
+        </div>
+        <div>
+          <p class="mb-1">Username: {{ e.username }}</p>
+          <div class="d-flex align-items-center">
+            <label class="me-2 mb-0">Password:</label>
+            <input id="pwd-{{ loop.index0 }}" type="text" class="form-control-plaintext me-2" value="{{ e.password }}" readonly style="max-width:300px">
+            <button class="btn btn-sm btn-outline-secondary" type="button" onclick="togglePwd({{ loop.index0 }})">Hide/Show</button>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="alert alert-info">No entries yet.</div>
+    {% endfor %}
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    function togglePwd(i) {
+      const el = document.getElementById('pwd-' + i);
+      if (!el) return;
+      if (el.type === 'password') {
+        el.type = 'text';
+      } else {
+        el.type = 'password';
+      }
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <h3>Edit Entry</h3>
+  <form method="post" class="card p-3">
+    <div class="mb-2">
+      <label class="form-label">Service</label>
+      <input class="form-control" name="service" value="{{ entry.service }}" />
+    </div>
+    <div class="mb-2">
+      <label class="form-label">Username</label>
+      <input class="form-control" name="username" value="{{ entry.username }}" />
+    </div>
+    <div class="mb-2">
+      <label class="form-label">Password</label>
+      <div class="d-flex">
+        <input id="edit-pwd" class="form-control" name="password" value="{{ entry.password }}" type="text" />
+        <button id="edit-pwd-btn" type="button" class="btn btn-outline-secondary ms-2" onclick="toggleEditPwd()">Hide</button>
+      </div>
+    </div>
+    <div class="mb-2">
+      <label class="form-label">Notes</label>
+      <input class="form-control" name="notes" value="{{ entry.notes }}" />
+    </div>
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a class="btn btn-secondary" href="{{ url_for('vault') }}">Cancel</a>
+  </form>
+  <script>
+    function toggleEditPwd(){
+      const el = document.getElementById('edit-pwd');
+      const btn = document.getElementById('edit-pwd-btn');
+      if(!el) return;
+      if(el.type === 'password'){ el.type = 'text'; if(btn) btn.textContent='Hide'; }
+      else { el.type = 'password'; if(btn) btn.textContent='Show'; }
+    }
+  </script>
+{% endblock %}

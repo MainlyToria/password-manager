@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <div class="card p-3">
+        <h4>Unlock Vault</h4>
+        <form method="post">
+          <div class="mb-2">
+            <label class="form-label">Master Password</label>
+            <div class="d-flex">
+              <input id="master-pwd" class="form-control" type="text" name="master" />
+              <button id="master-pwd-btn" class="btn btn-outline-secondary ms-2" type="button" onclick="toggleField('master-pwd', this)">Hide</button>
+            </div>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary" name="action" value="unlock" type="submit">Unlock</button>
+            <button class="btn btn-secondary" name="action" value="create" type="submit">Create New Vault</button>
+          </div>
+        </form>
+        <p class="mt-3"><small>Note: Vault master password is separate from your account password.</small></p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
