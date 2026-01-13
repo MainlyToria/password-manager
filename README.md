@@ -66,14 +66,9 @@ Professional presentation
 - Clear security section describing encryption, PBKDF2 parameters, and upgrade path from legacy SHA-256.
 - Included templates, static assets, and instructions to run the web demo — suitable for a portfolio demo.
 
-Polish / Next steps (suggested for portfolio)
-
-- Add unit tests and CI pipeline (GitHub Actions) to demonstrate engineering rigour.
-- Add automated security tests, static code analysis, and dependency checks.
-- Replace demo verification code display with email/SMS in a real deployment.
-
 Repository quality additions included
 
 - Basic unit tests (`tests/`) for `crypto` and `storage` and a CI workflow at `.github/workflows/ci.yml`.
 - `.gitignore` excludes secret and build artifacts.
 - License and polished static assets (logo, favicon, CSS) included.
+
